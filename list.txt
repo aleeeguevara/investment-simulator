@@ -1,0 +1,13 @@
+icons: react-icons,
+animation: aos,
+google Analytics,
+google tag manager,
+google recaptcha,
+themes: dark & light,
+language: portugues & english
+form validation: formik & yup,
+cookies modal: js cookie,
+viewport max-scale 1,
+embed google map,
+modal component,
+template e-mail
