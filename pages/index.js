@@ -3,7 +3,7 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Head from 'next/head';
 
 // styles
-import Form from '@/components/Form/';
+import Simulator from '@/components/Simulator/';
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Simulador de Investimentos</h1>
-      <Form />
+      <Simulator />
       <GoogleAnalytics />
     </div>
   );

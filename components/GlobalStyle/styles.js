@@ -20,15 +20,24 @@ const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 23px;
       font-weight: 600;
       text-align: center;
       margin: 0;
       padding: 1rem;
+
+      @media(min-width: 620px){
+        font-size: 28px;
+      }
     }
 
     h2 {
-      font-size: 24px;
+      margin: 0 1rem;
+      font-size: 17px;
+
+      @media(min-width: 620px){
+        font-size: 20px;
+      }
     }
 
   }
