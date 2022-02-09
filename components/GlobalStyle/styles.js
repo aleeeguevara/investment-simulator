@@ -14,9 +14,10 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     min-width: 320px;
 
-    div{
+    .main{
       background: #efefef;
       margin: 1rem;
+      padding: 1rem;
     }
 
     h1 {

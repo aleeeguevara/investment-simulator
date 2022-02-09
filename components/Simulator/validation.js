@@ -9,11 +9,11 @@ export default {
   },
   validationSchema: Yup.object({
     aporte: Yup.string()
-      .required('Aporte deve ser um número'),
+      .required('Aporte deve ser preenchido'),
     prazo: Yup.string()
       .required('Preencha o número'),
     aporteMensal: Yup.string()
-      .required('Aporte deve ser um número'),
+      .required('Aporte deve ser preenchido'),
     rentabilidade: Yup.string()
       .required('Rentabilidade deve ser informada'),
   }),

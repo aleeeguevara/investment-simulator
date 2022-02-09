@@ -6,13 +6,33 @@ import { useState } from 'react';
 import {
   Container, Btn, Form, Inputform, LabelForm,
   Tooltip, LabelTooltip, BtnLeft, BtnRight, SelectionBtn, Wrap, BtnCenter,
+  Position, Error,
 } from './styles';
 import Validation from './validation';
 
-const FormContact = function Formpage() {
-  const [active, setActive] = useState(false);
+const Simulator = function Formpage() {
+  const [income, setIncome] = useState({
+    gross: false,
+    liquid: false,
+  });
+  const [indexingType, setIndexingType] = useState({
+    pre: false,
+    pos: false,
+    fix: false,
+  });
 
   const formik = useFormik(Validation);
+
+  function maskMoney(moneyRaw) {
+    let maskedValue = moneyRaw;
+    maskedValue = maskedValue.replace(/\D/g, '');
+    maskedValue = `R$${(maskedValue / 100).toFixed(2)}`;
+    maskedValue = maskedValue.replace('.', ',');
+    maskedValue = maskedValue.replace(/(\d)(\d{3})(\d{3}),/g, '$1.$2.$3,');
+    maskedValue = maskedValue.replace(/(\d)(\d{3}),/g, '$1.$2,');
+
+    return maskedValue;
+  }
 
   return (
     <Container>
@@ -31,45 +51,72 @@ const FormContact = function Formpage() {
             </Tooltip>
           </LabelTooltip>
           <SelectionBtn>
-            <BtnLeft type="button" active={active} onClick={() => setActive(false)}>Bruto</BtnLeft>
-            <BtnRight type="button" active={active} onClick={() => setActive(true)}>Líquido</BtnRight>
+            <BtnLeft
+              type="button"
+              active={income.gross}
+              onClick={() => setIncome({ gross: true, liquid: false })}
+            >
+              Bruto
+            </BtnLeft>
+
+            <BtnRight
+              type="button"
+              active={income.liquid}
+              onClick={() => setIncome({ gross: false, liquid: true })}
+            >
+              Líquido
+            </BtnRight>
           </SelectionBtn>
-          <LabelForm className="gray-label">
+          <LabelForm
+            touched={formik.touched.aporte}
+            error={formik.errors.aporte}
+          >
+
             Aporte Inicial
             <Inputform
               name="aporte"
               type="text"
-              onChange={formik.handleChange}
+              onChange={(e) => {
+                formik.setFieldValue('aporte', maskMoney(e.target.value));
+              }}
               onBlur={formik.handleBlur}
               value={formik.values.aporte}
               error={formik.errors.aporte}
               touched={formik.touched.aporte}
               readOnly={formik.isSubmitting}
-              maskPlaceholder={null}
-              mask="R$9.999,999"
             />
           </LabelForm>
           {formik.touched.aporte && formik.errors.aporte && (
-            <div className="errorMsg">{formik.errors.aporte}</div>
+            <Position>
+              <Error>{formik.errors.aporte}</Error>
+            </Position>
           )}
-          <LabelForm>
+          <LabelForm
+            touched={formik.touched.prazo}
+            error={formik.errors.prazo}
+          >
             Prazo (em meses)
             <Inputform
               name="prazo"
-              type="number"
+              type="text"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.prazo}
               error={formik.errors.prazo}
               touched={formik.touched.prazo}
               readOnly={formik.isSubmitting}
-              maxLength={2}
+              mask="99"
             />
           </LabelForm>
           {formik.touched.prazo && formik.errors.prazo && (
-            <div className="errorMsg">{formik.errors.prazo}</div>
+            <Position>
+              <Error>{formik.errors.prazo}</Error>
+            </Position>
           )}
-          <LabelForm>
+          <LabelForm
+            touched={formik.touched.ipca}
+            error={formik.errors.ipca}
+          >
             IPCA (ao ano)
             <Inputform
               name="ipca"
@@ -84,7 +131,9 @@ const FormContact = function Formpage() {
             />
           </LabelForm>
           {formik.touched.ipca && formik.errors.ipca && (
-            <div className="errorMsg">{formik.errors.ipca}</div>
+            <Position>
+              <Error>{formik.errors.ipca}</Error>
+            </Position>
           )}
         </Wrap>
         <Wrap>
@@ -101,30 +150,65 @@ const FormContact = function Formpage() {
           </LabelTooltip>
 
           <SelectionBtn>
-            <BtnLeft checked>PRÉ</BtnLeft>
-            <BtnCenter checked>POS</BtnCenter>
-            <BtnRight checked>FIXADO</BtnRight>
+            <BtnLeft
+              type="button"
+              active={indexingType.pre}
+              onClick={() => setIndexingType(({
+                pre: true, pos: false, fix: false,
+              }))}
+              threeOptions
+            >
+              PRÉ
+            </BtnLeft>
+            <BtnCenter
+              type="button"
+              active={indexingType.pos}
+              onClick={() => setIndexingType(({
+                pre: false, pos: true, fix: false,
+              }))}
+            >
+              POS
+            </BtnCenter>
+            <BtnRight
+              type="button"
+              active={indexingType.fix}
+              onClick={() => setIndexingType(({
+                pre: false, pos: false, fix: true,
+              }))}
+              threeOptions
+            >
+              FIXADO
+            </BtnRight>
           </SelectionBtn>
 
-          <LabelForm>
+          <LabelForm
+            touched={formik.touched.aporteMensal}
+            error={formik.errors.aporteMensal}
+          >
             Aporte Mensal
             <Inputform
               name="aporteMensal"
               type="text"
-              onChange={formik.handleChange}
+              onChange={(e) => {
+                formik.setFieldValue('aporteMensal', maskMoney(e.target.value));
+              }}
               onBlur={formik.handleBlur}
               value={formik.values.aporteMensal}
               error={formik.errors.aporteMensal}
               touched={formik.touched.aporteMensal}
               readOnly={formik.isSubmitting}
-              mask="R$ 9.999,999"
             />
           </LabelForm>
           {formik.touched.aporteMensal && formik.errors.aporteMensal && (
-            <div className="errorMsg">{formik.errors.aporteMensal}</div>
+            <Position>
+              <Error>{formik.errors.aporteMensal}</Error>
+            </Position>
           )}
 
-          <LabelForm>
+          <LabelForm
+            touched={formik.touched.rentabilidade}
+            error={formik.errors.rentabilidade}
+          >
             Rentabilidade
             <Inputform
               name="rentabilidade"
@@ -139,10 +223,15 @@ const FormContact = function Formpage() {
             />
           </LabelForm>
           {formik.touched.rentabilidade && formik.errors.rentabilidade && (
-            <div className="errorMsg">{formik.errors.rentabilidade}</div>
+            <Position>
+              <Error>{formik.errors.rentabilidade}</Error>
+            </Position>
           )}
 
-          <LabelForm>
+          <LabelForm
+            touched={formik.touched.cdi}
+            error={formik.errors.cdi}
+          >
             CDI (ao ano)
             <Inputform
               name="cdi"
@@ -157,7 +246,9 @@ const FormContact = function Formpage() {
             />
           </LabelForm>
           {formik.touched.cdi && formik.errors.cdi && (
-            <div className="errorMsg">{formik.errors.cdi}</div>
+            <Position>
+              <Error>{formik.errors.cdi}</Error>
+            </Position>
           )}
         </Wrap>
       </Form>
@@ -180,4 +271,4 @@ const FormContact = function Formpage() {
     </Container>
   );
 };
-export default FormContact;
+export default Simulator;

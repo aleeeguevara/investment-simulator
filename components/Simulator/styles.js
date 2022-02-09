@@ -9,14 +9,6 @@ export const Container = styled.section`
     width: 500px;
     margin: 0;
   }
-
-  .errorMsg{
-    color: #e92929;
-    font-weight: 400;
-    font-size: 12px;
-    padding-bottom: .5rem;
-    margin: 0;
-  }
 `;
 
 export const Form = styled.form`
@@ -36,24 +28,19 @@ export const Wrap = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     margin: 0 1rem;
-    width: 50%;
 `;
 
 export const BtnLeft = styled.button`
-  background: ${({ active }) => (!active ? '#ed8e53' : '#efefef')};
+  background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};
   border: 1px solid black;
   border-radius: 8px 0 0 8px;
-  color: ${({ active }) => (!active ? 'white' : 'black')};
+  color: ${({ active }) => (active ? 'white' : 'black')};
   font-size: 12px;
   height: 40px;
   margin-bottom: 1rem;
   padding-left: 0;
-  width: ${({ threeOptions }) => (!threeOptions ? '90px' : '60px')};
+  width: ${({ threeOptions }) => (threeOptions ? '60px' : '90px')};
 
-  @media (min-width: 620px){
-    height: 47px;
-    width: ${({ threeOptions }) => (!threeOptions ? '89px' : '66px')};
-  }
   :before{
     content: '✓';
     color: #efefef;
@@ -62,20 +49,15 @@ export const BtnLeft = styled.button`
 `;
 
 export const BtnCenter = styled.button`
-  background: ${({ active }) => (!active ? '#ed8e53' : '#efefef')};
+  background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};
   border: 1px solid black;
-
-  color: ${({ active }) => (!active ? 'white' : 'black')};
+  color: ${({ active }) => (active ? 'white' : 'black')};
   font-size: 12px;
   height: 40px;
   margin-bottom: 1rem;
   padding-left: 0;
   width: 60px;
 
-  @media (min-width: 620px){
-    height: 47px;
-    width: 66px;
-  }
   :before{
     content: '✓';
     color: #efefef;
@@ -83,19 +65,14 @@ export const BtnCenter = styled.button`
 `;
 
 export const BtnRight = styled.button`
-  background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};
+  background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};;
   border: 1px solid black;
   border-radius: 0 8px 8px 0;
   color: ${({ active }) => (active ? 'white' : 'black')};
   font-size: 12px;
   height: 40px;
   padding-left: 0;
-  width: ${({ threeOptions }) => (!threeOptions ? '90px' : '60px')};
-
-  @media (min-width: 620px){
-    height: 47px;
-    width: ${({ threeOptions }) => (!threeOptions ? '89px' : '66px')};
-  }
+  width: ${({ threeOptions }) => (threeOptions ? '60px' : '90px')};
 
   :before{
     content: '✓';
@@ -106,6 +83,7 @@ export const BtnRight = styled.button`
 export const SelectionBtn = styled.div`
   display: flex;
   margin: 0;
+  padding: 0;
 
   &.space{
     flex-direction: column;
@@ -113,7 +91,7 @@ export const SelectionBtn = styled.div`
     margin: 0 auto;
     @media (min-width: 620px){
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: left;
     }
   }
 `;
@@ -124,6 +102,7 @@ export const LabelTooltip = styled.div`
   margin: 0;
   width: 180px;
   margin: .5rem 0;
+  padding: 0;
 
   p{
     font-size: 12px;
@@ -135,6 +114,7 @@ export const LabelTooltip = styled.div`
 export const Tooltip = styled.div`
   position: relative;
   margin: 0;
+  padding: 0;
 
   :hover{
     span{
@@ -191,6 +171,7 @@ export const Inputform = styled(InputMask)`
   &:focus{
     outline: none;
   }
+
 `;
 export const LabelForm = styled.label`
   color: ${validationLabel};
@@ -204,6 +185,19 @@ export const LabelForm = styled.label`
   }
 `;
 
+export const Position = styled.div`
+  position: relative;
+  margin: 0;
+`;
+
+export const Error = styled.div`
+  color: #e92929;
+  font-size: 10px;
+  position: absolute;
+  bottom: 1px;
+  margin: 0;
+`;
+
 export const Btn = styled.button`
   background: ${({ clear }) => (clear ? 'inherit' : '#969696')};
   border-radius: 8px;
@@ -211,9 +205,11 @@ export const Btn = styled.button`
   font-weight: 600;
   padding: .6rem;
   margin: .5rem 0;
-  width: 200px;
+  width: 180px;
+  align-self: center;
 
   @media (min-width: 620px){
     padding: .85rem;
+    margin: 0 2rem 0 1rem;
   }
 `;

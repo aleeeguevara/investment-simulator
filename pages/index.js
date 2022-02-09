@@ -7,7 +7,7 @@ import Simulator from '@/components/Simulator/';
 
 export default function Home() {
   return (
-    <div>
+    <div className="main">
       <Head>
         <title>Calculadora de Investimentos</title>
         <meta name="descrição" content="simulador de investimentos" />
