@@ -5,8 +5,9 @@ import styled from 'styled-components';
 export const Container = styled.section`
   margin: 0 auto;
   width: 200px;
-  @media(min-width: 620px){
-    width: 500px;
+
+  @media(min-width: 900px){
+    width: 450px;
     margin: 0;
   }
 `;
@@ -17,17 +18,25 @@ export const Form = styled.form`
   flex-wrap: wrap;
   width: 100%;
 
-  @media (min-width: 620px){
+  @media (min-width: 900px){
     flex-direction: row;
-    flex-wrap: nowrap;
   }
 `;
 
 export const Wrap = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin: 0 1rem;
+    margin-left: 1rem;
+
+    &.btnWrap{
+      margin: 0 1rem;
+      flex-direction: column;
+    }
+
+    &.btnForm{
+      margin-right: 1.3rem;
+    }
 `;
 
 export const BtnLeft = styled.button`
@@ -89,7 +98,7 @@ export const SelectionBtn = styled.div`
     flex-direction: column;
     display: flex;
     margin: 0 auto;
-    @media (min-width: 620px){
+    @media (min-width: 900px){
       flex-direction: row;
       justify-content: left;
     }
@@ -142,7 +151,7 @@ export const Tooltip = styled.div`
     visibility: hidden;
     width: 120px;
 
-    @media(min-width: 620px){
+    @media(min-width: 900px){
       top: 0px;
       left: 150%;
     }
@@ -194,7 +203,8 @@ export const Error = styled.div`
   color: #e92929;
   font-size: 10px;
   position: absolute;
-  bottom: 1px;
+  bottom: 4px;
+  left: -200px;
   margin: 0;
 `;
 
@@ -208,8 +218,8 @@ export const Btn = styled.button`
   width: 180px;
   align-self: center;
 
-  @media (min-width: 620px){
+  @media (min-width: 900px){
     padding: .85rem;
-    margin: 0 2rem 0 1rem;
+    margin: 0;
   }
 `;

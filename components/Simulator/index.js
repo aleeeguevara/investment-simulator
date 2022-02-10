@@ -38,7 +38,7 @@ const Simulator = function Formpage() {
     <Container>
       <h2>Simulador</h2>
       <Form onSubmit={formik.handleSubmit}>
-        <Wrap>
+        <Wrap className="btnWrap">
           <LabelTooltip>
             <p>Rendimento</p>
             <Tooltip>
@@ -67,76 +67,8 @@ const Simulator = function Formpage() {
               Líquido
             </BtnRight>
           </SelectionBtn>
-          <LabelForm
-            touched={formik.touched.aporte}
-            error={formik.errors.aporte}
-          >
-
-            Aporte Inicial
-            <Inputform
-              name="aporte"
-              type="text"
-              onChange={(e) => {
-                formik.setFieldValue('aporte', maskMoney(e.target.value));
-              }}
-              onBlur={formik.handleBlur}
-              value={formik.values.aporte}
-              error={formik.errors.aporte}
-              touched={formik.touched.aporte}
-              readOnly={formik.isSubmitting}
-            />
-          </LabelForm>
-          {formik.touched.aporte && formik.errors.aporte && (
-            <Position>
-              <Error>{formik.errors.aporte}</Error>
-            </Position>
-          )}
-          <LabelForm
-            touched={formik.touched.prazo}
-            error={formik.errors.prazo}
-          >
-            Prazo (em meses)
-            <Inputform
-              name="prazo"
-              type="text"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.prazo}
-              error={formik.errors.prazo}
-              touched={formik.touched.prazo}
-              readOnly={formik.isSubmitting}
-              mask="99"
-            />
-          </LabelForm>
-          {formik.touched.prazo && formik.errors.prazo && (
-            <Position>
-              <Error>{formik.errors.prazo}</Error>
-            </Position>
-          )}
-          <LabelForm
-            touched={formik.touched.ipca}
-            error={formik.errors.ipca}
-          >
-            IPCA (ao ano)
-            <Inputform
-              name="ipca"
-              type="number"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.ipca}
-              error={formik.errors.ipca}
-              touched={formik.touched.ipca}
-              readOnly={formik.isSubmitting}
-              maxLength={10}
-            />
-          </LabelForm>
-          {formik.touched.ipca && formik.errors.ipca && (
-            <Position>
-              <Error>{formik.errors.ipca}</Error>
-            </Position>
-          )}
         </Wrap>
-        <Wrap>
+        <Wrap className="btnWrap">
           <LabelTooltip>
             <p>Tipos de Indexação</p>
             <Tooltip>
@@ -180,7 +112,34 @@ const Simulator = function Formpage() {
               FIXADO
             </BtnRight>
           </SelectionBtn>
+        </Wrap>
+        <Wrap>
+          <LabelForm
+            touched={formik.touched.aporte}
+            error={formik.errors.aporte}
+          >
 
+            Aporte Inicial
+            <Inputform
+              name="aporte"
+              type="text"
+              onChange={(e) => {
+                formik.setFieldValue('aporte', maskMoney(e.target.value));
+              }}
+              onBlur={formik.handleBlur}
+              value={formik.values.aporte}
+              error={formik.errors.aporte}
+              touched={formik.touched.aporte}
+              readOnly={formik.isSubmitting}
+            />
+          </LabelForm>
+          {formik.touched.aporte && formik.errors.aporte && (
+            <Position>
+              <Error>{formik.errors.aporte}</Error>
+            </Position>
+          )}
+        </Wrap>
+        <Wrap>
           <LabelForm
             touched={formik.touched.aporteMensal}
             error={formik.errors.aporteMensal}
@@ -204,7 +163,32 @@ const Simulator = function Formpage() {
               <Error>{formik.errors.aporteMensal}</Error>
             </Position>
           )}
-
+        </Wrap>
+        <Wrap>
+          <LabelForm
+            touched={formik.touched.prazo}
+            error={formik.errors.prazo}
+          >
+            Prazo (em meses)
+            <Inputform
+              name="prazo"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.prazo}
+              error={formik.errors.prazo}
+              touched={formik.touched.prazo}
+              readOnly={formik.isSubmitting}
+              mask="99"
+            />
+          </LabelForm>
+          {formik.touched.prazo && formik.errors.prazo && (
+            <Position>
+              <Error>{formik.errors.prazo}</Error>
+            </Position>
+          )}
+        </Wrap>
+        <Wrap>
           <LabelForm
             touched={formik.touched.rentabilidade}
             error={formik.errors.rentabilidade}
@@ -227,7 +211,32 @@ const Simulator = function Formpage() {
               <Error>{formik.errors.rentabilidade}</Error>
             </Position>
           )}
-
+        </Wrap>
+        <Wrap>
+          <LabelForm
+            touched={formik.touched.ipca}
+            error={formik.errors.ipca}
+          >
+            IPCA (ao ano)
+            <Inputform
+              name="ipca"
+              type="number"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.ipca}
+              error={formik.errors.ipca}
+              touched={formik.touched.ipca}
+              readOnly={formik.isSubmitting}
+              maxLength={10}
+            />
+          </LabelForm>
+          {formik.touched.ipca && formik.errors.ipca && (
+            <Position>
+              <Error>{formik.errors.ipca}</Error>
+            </Position>
+          )}
+        </Wrap>
+        <Wrap>
           <LabelForm
             touched={formik.touched.cdi}
             error={formik.errors.cdi}
@@ -251,23 +260,25 @@ const Simulator = function Formpage() {
             </Position>
           )}
         </Wrap>
-      </Form>
+        <Wrap className="btnForm">
+          <Btn
+            type="button"
+            clear
+          >
+            Limpar campos
+          </Btn>
+        </Wrap>
+        <Wrap className="btnForm">
+          <Btn
+            disabled={formik.isSubmitting}
+            type="submit"
+            clear={false}
+          >
+            Simular
+          </Btn>
 
-      <SelectionBtn className="space">
-        <Btn
-          type="button"
-          clear
-        >
-          Limpar campos
-        </Btn>
-        <Btn
-          disabled={formik.isSubmitting}
-          type="submit"
-          clear={false}
-        >
-          Simular
-        </Btn>
-      </SelectionBtn>
+        </Wrap>
+      </Form>
     </Container>
   );
 };

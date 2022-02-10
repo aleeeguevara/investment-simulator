@@ -4,6 +4,7 @@ import Head from 'next/head';
 
 // styles
 import Simulator from '@/components/Simulator/';
+import OutcomeSimulator from '@/components/OutcomeSimulator';
 
 export default function Home() {
   return (
@@ -14,7 +15,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Simulador de Investimentos</h1>
-      <Simulator />
+      <div className="flex">
+        <Simulator />
+        <OutcomeSimulator />
+      </div>
       <GoogleAnalytics />
     </div>
   );

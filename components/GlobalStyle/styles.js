@@ -19,6 +19,11 @@ const GlobalStyle = createGlobalStyle`
       margin: 1rem;
       padding: 1rem;
     }
+    .flex{
+      @media (min-width: 900px){
+        display: flex;
+       }
+    }
 
     h1 {
       font-size: 23px;
@@ -26,17 +31,21 @@ const GlobalStyle = createGlobalStyle`
       text-align: center;
       margin: 0;
       padding: 1rem;
+      max-width: 1000px;
 
-      @media(min-width: 620px){
+      @media(min-width: 900px){
         font-size: 28px;
       }
     }
 
     h2 {
-      margin: 0 1rem;
+      margin-left: 1rem;
+      margin-top: 1rem;
       font-size: 17px;
+      text-align: center;
 
-      @media(min-width: 620px){
+      @media(min-width: 900px){
+        text-align: left;
         font-size: 20px;
       }
     }
