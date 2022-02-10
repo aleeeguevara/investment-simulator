@@ -74,9 +74,10 @@ const Simulator = function Formpage() {
             <Tooltip>
               🛈
               <span>
-                O rendimento brut é o resultado sem nenhum tipo de desconto,
-                nem de taxas, nem de impostos. Já o rendimento líquido é
-                esse mesmo resultado, descontando taxas ou impostos.
+                Indexador é o termo utilizado para se referir aos índices usados
+                como base para corrigir os valores monetários de um determinado
+                ativo. No Brasil, os indexadores mais comuns são o IPCA, a taxa
+                Selic e o CDI.
               </span>
             </Tooltip>
           </LabelTooltip>
