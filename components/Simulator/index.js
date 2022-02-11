@@ -76,6 +76,8 @@ const Simulator = function Formpage() {
     })();
   }, []);
 
+  console.log('ver', formik.values);
+
   return (
     <div className="flex">
       <Container>
@@ -93,31 +95,30 @@ const Simulator = function Formpage() {
                 </span>
               </Tooltip>
             </LabelTooltip>
-            <SelectionBtn
-              role="group"
-              name="tipoRendimento"
-              onChange={formik.handleChange}
-              value={formik.values.tipoRendimento}
-              error={formik.errors.tipoRendimento}
-              readOnly={formik.isSubmitting}
-            >
+            <SelectionBtn>
               <BtnLeft
                 type="radio"
                 active={income.gross}
-                onChange={formik.handleChange}
-                onClick={() => setIncome({ gross: true, liquid: false })}
+                onClick={() => {
+                  setIncome({ gross: true, liquid: false });
+
+                  formik.setFieldValue('tipoRendimento', 'bruto');
+                }}
                 name="tipoRendimento"
-                value="bruto"
+                readOnly={formik.isSubmitting}
                 className="gross"
               />
 
               <BtnRight
                 type="radio"
                 active={income.liquid}
-                onChange={formik.handleChange}
-                onClick={() => setIncome({ gross: false, liquid: true })}
+                onClick={() => {
+                  setIncome({ gross: false, liquid: true });
+
+                  formik.setFieldValue('tipoRendimento', 'liquido');
+                }}
                 name="tipoRendimento"
-                value="liquido"
+                readOnly={formik.isSubmitting}
                 threeOptions={false}
                 className="liquido"
               />
@@ -138,45 +139,41 @@ const Simulator = function Formpage() {
               </Tooltip>
             </LabelTooltip>
 
-            <SelectionBtn
-              name="tipoIndexacao"
-              role="group"
-              onChange={formik.handleChange}
-              value={formik.values.tipoIndexacao}
-              error={formik.errors.tipoIndexacao}
-              readOnly={formik.isSubmitting}
-            >
+            <SelectionBtn>
               <BtnLeft
                 type="radio"
                 active={indexingType.pre}
-                onChange={formik.handleChange}
-                onClick={() => setIndexingType(({
-                  pre: true, pos: false, fix: false,
-                }))}
+                onClick={() => {
+                  setIndexingType(({ pre: true, pos: false, fix: false }));
+
+                  formik.setFieldValue('tipoIndexacao', 'pre');
+                }}
                 threeOptions
                 name="tipoIndexacao"
-                value="pre"
+                readOnly={formik.isSubmitting}
               />
               <BtnCenter
                 type="radio"
                 active={indexingType.pos}
-                onChange={formik.handleChange}
-                onClick={() => setIndexingType(({
-                  pre: false, pos: true, fix: false,
-                }))}
+                onClick={() => {
+                  setIndexingType(({ pre: false, pos: true, fix: false }));
+
+                  formik.setFieldValue('tipoIndexacao', 'pos');
+                }}
                 name="tipoIndexacao"
-                value="pos"
+                readOnly={formik.isSubmitting}
               />
               <BtnRight
                 type="radio"
                 active={indexingType.fix}
-                onChange={formik.handleChange}
-                onClick={() => setIndexingType(({
-                  pre: false, pos: false, fix: true,
-                }))}
+                onClick={() => {
+                  setIndexingType(({ pre: false, pos: false, fix: true }));
+
+                  formik.setFieldValue('tipoIndexacao', 'ipca');
+                }}
                 threeOptions
                 name="tipoIndexacao"
-                value="ipca"
+                readOnly={formik.isSubmitting}
               />
             </SelectionBtn>
           </Wrap>
@@ -333,6 +330,7 @@ const Simulator = function Formpage() {
               clear
               onClick={() => {
                 formik.resetForm();
+
                 setIncome(false);
                 setIndexingType(false);
                 setSimulation(false);
