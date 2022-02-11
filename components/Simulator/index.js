@@ -47,7 +47,16 @@ const Simulator = function Formpage() {
 
       const [dataReturned] = result;
 
-      setSimulationData(dataReturned);
+      const dataParsed = {
+        valorFinalBruto: dataReturned.valorFinalBruto,
+        aliquotaIR: dataReturned.aliquotaIR,
+        valorPagoIR: dataReturned.valorPagoIR,
+        valorFinalLiquido: dataReturned.valorFinalLiquido,
+        valorTotalInvestido: dataReturned.valorTotalInvestido,
+        ganhoLiquido: dataReturned.ganhoLiquido,
+      };
+
+      setSimulationData(dataParsed);
       setSimulation(true);
     },
   });
@@ -75,8 +84,6 @@ const Simulator = function Formpage() {
       setData(resultParsed);
     })();
   }, []);
-
-  console.log('ver', formik.values);
 
   return (
     <div className="flex">

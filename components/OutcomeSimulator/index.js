@@ -46,6 +46,13 @@ const OutcomeSimulator = function OutcomeSection({ simulationData, simulation })
 };
 OutcomeSimulator.propTypes = {
   simulation: PropTypes.bool.isRequired,
-  simulationData: PropTypes.string.isRequired,
+  simulationData: PropTypes.shape({
+    valorFinalBruto: PropTypes.number.isRequired,
+    aliquotaIR: PropTypes.number.isRequired,
+    valorPagoIR: PropTypes.number.isRequired,
+    valorFinalLiquido: PropTypes.number.isRequired,
+    valorTotalInvestido: PropTypes.number.isRequired,
+    ganhoLiquido: PropTypes.number.isRequired,
+  }).isRequired,
 };
 export default OutcomeSimulator;
