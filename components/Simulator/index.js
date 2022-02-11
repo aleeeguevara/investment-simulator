@@ -25,8 +25,7 @@ const Simulator = function Formpage() {
   });
 
   const [simulationData, setSimulationData] = useState(undefined);
-
-  let simulation = false;
+  const [simulation, setSimulation] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -41,15 +40,15 @@ const Simulator = function Formpage() {
     onSubmit: async (values) => {
       const inputValues = values;
       const simulatorsResult = await getSimulations();
-      simulation = true;
 
       const result = simulatorsResult.filter((item) => item.tipoRendimento
-        === inputValues.tipoRendimento
-        && item.tipoIndexacao === inputValues.tipoIndexacao);
+      === inputValues.tipoRendimento
+      && item.tipoIndexacao === inputValues.tipoIndexacao);
 
       const [dataReturned] = result;
 
       setSimulationData(dataReturned);
+      setSimulation(true);
     },
   });
 
@@ -95,8 +94,8 @@ const Simulator = function Formpage() {
               </Tooltip>
             </LabelTooltip>
             <SelectionBtn
-              name="tipoRendimento"
               role="group"
+              name="tipoRendimento"
               onChange={formik.handleChange}
               value={formik.values.tipoRendimento}
               error={formik.errors.tipoRendimento}
@@ -105,6 +104,7 @@ const Simulator = function Formpage() {
               <BtnLeft
                 type="radio"
                 active={income.gross}
+                onChange={formik.handleChange}
                 onClick={() => setIncome({ gross: true, liquid: false })}
                 name="tipoRendimento"
                 value="bruto"
@@ -114,6 +114,7 @@ const Simulator = function Formpage() {
               <BtnRight
                 type="radio"
                 active={income.liquid}
+                onChange={formik.handleChange}
                 onClick={() => setIncome({ gross: false, liquid: true })}
                 name="tipoRendimento"
                 value="liquido"
@@ -148,6 +149,7 @@ const Simulator = function Formpage() {
               <BtnLeft
                 type="radio"
                 active={indexingType.pre}
+                onChange={formik.handleChange}
                 onClick={() => setIndexingType(({
                   pre: true, pos: false, fix: false,
                 }))}
@@ -158,6 +160,7 @@ const Simulator = function Formpage() {
               <BtnCenter
                 type="radio"
                 active={indexingType.pos}
+                onChange={formik.handleChange}
                 onClick={() => setIndexingType(({
                   pre: false, pos: true, fix: false,
                 }))}
@@ -167,6 +170,7 @@ const Simulator = function Formpage() {
               <BtnRight
                 type="radio"
                 active={indexingType.fix}
+                onChange={formik.handleChange}
                 onClick={() => setIndexingType(({
                   pre: false, pos: false, fix: true,
                 }))}
@@ -331,6 +335,7 @@ const Simulator = function Formpage() {
                 formik.resetForm();
                 setIncome(false);
                 setIndexingType(false);
+                setSimulation(false);
               }}
             >
               Limpar campos

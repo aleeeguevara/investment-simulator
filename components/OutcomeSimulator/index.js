@@ -5,9 +5,9 @@ import {
   Container, Cards, Card, Outcome,
 } from './styles';
 
-const OutcomeSimulator = function OutcomeSection({ simulationData }) {
+const OutcomeSimulator = function OutcomeSection({ simulationData, simulation }) {
   return (
-    <Container>
+    <Container simulation={simulation}>
       <h2>Resultado da Simulação</h2>
       <Cards>
         <Card>
@@ -45,6 +45,7 @@ const OutcomeSimulator = function OutcomeSection({ simulationData }) {
   );
 };
 OutcomeSimulator.propTypes = {
+  simulation: PropTypes.bool.isRequired,
   simulationData: PropTypes.string.isRequired,
 };
 export default OutcomeSimulator;
