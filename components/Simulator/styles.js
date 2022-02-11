@@ -10,6 +10,12 @@ export const Container = styled.section`
     width: 450px;
     margin: 0;
   }
+
+  .btnWrap{
+    margin: 0 1rem;
+    flex-direction: column;
+    margin-left: 0;
+  }
 `;
 
 export const Form = styled.form`
@@ -28,11 +34,6 @@ export const Wrap = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     margin-left: 1rem;
-
-    &.btnWrap{
-      margin: 0 1rem;
-      flex-direction: column;
-    }
 
     &.btnForm{
       margin-right: 1.3rem;

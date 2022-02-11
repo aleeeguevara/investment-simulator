@@ -90,99 +90,123 @@ const Simulator = function Formpage() {
       <Container>
         <h2>Simulador</h2>
         <Form onSubmit={formik.handleSubmit}>
-          <Wrap className="btnWrap">
-            <LabelTooltip>
-              <p>Rendimento</p>
-              <Tooltip>
-                🛈
-                <span>
-                  O rendimento brut é o resultado sem nenhum tipo de desconto,
-                  nem de taxas, nem de impostos. Já o rendimento líquido é
-                  esse mesmo resultado, descontando taxas ou impostos.
-                </span>
-              </Tooltip>
-            </LabelTooltip>
-            <SelectionBtn>
-              <BtnLeft
-                type="radio"
-                active={income.gross}
-                onClick={() => {
-                  setIncome({ gross: true, liquid: false });
+          <Wrap>
+            <div className="btnWrap">
+              <LabelTooltip>
+                <p>Rendimento</p>
+                <Tooltip>
+                  🛈
+                  <span>
+                    O rendimento brut é o resultado sem nenhum tipo de desconto,
+                    nem de taxas, nem de impostos. Já o rendimento líquido é
+                    esse mesmo resultado, descontando taxas ou impostos.
+                  </span>
+                </Tooltip>
+              </LabelTooltip>
+              <SelectionBtn>
+                <BtnLeft
+                  type="radio"
+                  active={income.gross}
+                  onClick={() => {
+                    setIncome({ gross: true, liquid: false });
 
-                  formik.setFieldValue('tipoRendimento', 'bruto');
-                }}
-                name="tipoRendimento"
-                readOnly={formik.isSubmitting}
-                className="gross"
-              />
+                    formik.setFieldValue('tipoRendimento', 'bruto');
+                  }}
+                  name="tipoRendimento"
+                  readOnly={formik.isSubmitting}
+                  error={formik.errors.tipoRendimento}
+                  touched={formik.touched.tipoRendimento}
+                  className="gross"
+                />
 
-              <BtnRight
-                type="radio"
-                active={income.liquid}
-                onClick={() => {
-                  setIncome({ gross: false, liquid: true });
+                <BtnRight
+                  type="radio"
+                  active={income.liquid}
+                  onClick={() => {
+                    setIncome({ gross: false, liquid: true });
 
-                  formik.setFieldValue('tipoRendimento', 'liquido');
-                }}
-                name="tipoRendimento"
-                readOnly={formik.isSubmitting}
-                threeOptions={false}
-                className="liquido"
-              />
-            </SelectionBtn>
+                    formik.setFieldValue('tipoRendimento', 'liquido');
+                  }}
+                  name="tipoRendimento"
+                  readOnly={formik.isSubmitting}
+                  error={formik.errors.tipoRendimento}
+                  touched={formik.touched.tipoRendimento}
+                  threeOptions={false}
+                  className="liquido"
+                />
+              </SelectionBtn>
+            </div>
+            {formik.touched.tipoRendimento && formik.errors.tipoRendimento && (
+              <Position>
+                <Error>{formik.errors.tipoRendimento}</Error>
+              </Position>
+            )}
           </Wrap>
 
-          <Wrap className="btnWrap">
-            <LabelTooltip>
-              <p>Tipos de Indexação</p>
-              <Tooltip>
-                🛈
-                <span>
-                  Indexador é o termo utilizado para se referir aos índices usados
-                  como base para corrigir os valores monetários de um determinado
-                  ativo. No Brasil, os indexadores mais comuns são o IPCA, a taxa
-                  Selic e o CDI.
-                </span>
-              </Tooltip>
-            </LabelTooltip>
+          <Wrap>
+            <div className="btnWrap">
+              <LabelTooltip>
+                <p>Tipos de Indexação</p>
+                <Tooltip>
+                  🛈
+                  <span>
+                    Indexador é o termo utilizado para se referir aos índices usados
+                    como base para corrigir os valores monetários de um determinado
+                    ativo. No Brasil, os indexadores mais comuns são o IPCA, a taxa
+                    Selic e o CDI.
+                  </span>
+                </Tooltip>
+              </LabelTooltip>
 
-            <SelectionBtn>
-              <BtnLeft
-                type="radio"
-                active={indexingType.pre}
-                onClick={() => {
-                  setIndexingType(({ pre: true, pos: false, fix: false }));
+              <SelectionBtn>
+                <BtnLeft
+                  type="radio"
+                  active={indexingType.pre}
+                  onClick={() => {
+                    setIndexingType(({ pre: true, pos: false, fix: false }));
 
-                  formik.setFieldValue('tipoIndexacao', 'pre');
-                }}
-                threeOptions
-                name="tipoIndexacao"
-                readOnly={formik.isSubmitting}
-              />
-              <BtnCenter
-                type="radio"
-                active={indexingType.pos}
-                onClick={() => {
-                  setIndexingType(({ pre: false, pos: true, fix: false }));
+                    formik.setFieldValue('tipoIndexacao', 'pre');
+                  }}
+                  threeOptions
+                  name="tipoIndexacao"
+                  readOnly={formik.isSubmitting}
+                  error={formik.errors.tipoIndexacao}
+                  touched={formik.touched.tipoIndexacao}
+                />
+                <BtnCenter
+                  type="radio"
+                  active={indexingType.pos}
+                  onClick={() => {
+                    setIndexingType(({ pre: false, pos: true, fix: false }));
 
-                  formik.setFieldValue('tipoIndexacao', 'pos');
-                }}
-                name="tipoIndexacao"
-                readOnly={formik.isSubmitting}
-              />
-              <BtnRight
-                type="radio"
-                active={indexingType.fix}
-                onClick={() => {
-                  setIndexingType(({ pre: false, pos: false, fix: true }));
+                    formik.setFieldValue('tipoIndexacao', 'pos');
+                  }}
+                  name="tipoIndexacao"
+                  readOnly={formik.isSubmitting}
+                  error={formik.errors.tipoIndexacao}
+                  touched={formik.touched.tipoIndexacao}
+                />
+                <BtnRight
+                  type="radio"
+                  active={indexingType.fix}
+                  onClick={() => {
+                    setIndexingType(({ pre: false, pos: false, fix: true }));
 
-                  formik.setFieldValue('tipoIndexacao', 'ipca');
-                }}
-                threeOptions
-                name="tipoIndexacao"
-                readOnly={formik.isSubmitting}
-              />
-            </SelectionBtn>
+                    formik.setFieldValue('tipoIndexacao', 'ipca');
+                  }}
+                  threeOptions
+                  name="tipoIndexacao"
+                  readOnly={formik.isSubmitting}
+                  error={formik.errors.tipoIndexacao}
+                  touched={formik.touched.tipoIndexacao}
+                />
+              </SelectionBtn>
+            </div>
+            {formik.touched.tipoIndexacao && formik.errors.tipoIndexacao && (
+              <Position>
+                <Error>{formik.errors.tipoIndexacao}</Error>
+              </Position>
+            )}
           </Wrap>
           <Wrap>
             <LabelForm
