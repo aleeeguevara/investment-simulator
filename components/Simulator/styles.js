@@ -39,7 +39,11 @@ export const Wrap = styled.div`
     }
 `;
 
-export const BtnLeft = styled.button`
+function selected({ active }) {
+  return active ? 'efefef' : 'black';
+}
+
+export const BtnLeft = styled.input`
   background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};
   border: 1px solid black;
   border-radius: 8px 0 0 8px;
@@ -49,15 +53,28 @@ export const BtnLeft = styled.button`
   margin-bottom: 1rem;
   padding-left: 0;
   width: ${({ threeOptions }) => (threeOptions ? '60px' : '90px')};
+  appearance: none;
+  margin: 0;
+  padding: ${({ threeOptions }) => (threeOptions ? '10px' : '10px 15px')};;
 
   :before{
     content: '✓';
     color: #efefef;
 
   }
+  :after{
+    content:'PRE';
+    color: ${selected};
+  }
+
+  &.gross{
+    :after{
+      content:'BRUTO';
+    }
+  }
 `;
 
-export const BtnCenter = styled.button`
+export const BtnCenter = styled.input`
   background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};
   border: 1px solid black;
   color: ${({ active }) => (active ? 'white' : 'black')};
@@ -66,14 +83,22 @@ export const BtnCenter = styled.button`
   margin-bottom: 1rem;
   padding-left: 0;
   width: 60px;
+  appearance: none;
+  margin: 0;
+  padding: 10px;
 
   :before{
     content: '✓';
     color: #efefef;
   }
+
+  :after{
+    content:'POS';
+    color: ${selected};
+  }
 `;
 
-export const BtnRight = styled.button`
+export const BtnRight = styled.input`
   background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};;
   border: 1px solid black;
   border-radius: 0 8px 8px 0;
@@ -82,10 +107,24 @@ export const BtnRight = styled.button`
   height: 40px;
   padding-left: 0;
   width: ${({ threeOptions }) => (threeOptions ? '60px' : '90px')};
+  appearance: none;
+  margin: 0;
+  padding: ${({ threeOptions }) => (threeOptions ? '10px 0' : '10px')};
 
   :before{
     content: '✓';
     color: #efefef;
+  }
+
+  :after{
+    content:'FIXADO';
+    color: ${selected};
+  }
+
+  &.liquido{
+    :after{
+      content:'LIQUIDO';
+    }
   }
 `;
 
@@ -93,6 +132,7 @@ export const SelectionBtn = styled.div`
   display: flex;
   margin: 0;
   padding: 0;
+  margin-bottom: 1rem;
 
   &.space{
     flex-direction: column;
@@ -159,12 +199,8 @@ export const Tooltip = styled.div`
 
 `;
 
-function isSuccess(touched) {
-  return touched ? '#59c124;' : '#b1b1b1';
-}
-
 function validationInput({ touched, error }) {
-  return touched && error ? '#e92929' : isSuccess(touched);
+  return touched && error ? '#e92929' : '#b1b1b1';
 }
 function validationLabel({ touched, error }) {
   return touched && error ? '#e92929' : 'black';
@@ -208,8 +244,12 @@ export const Error = styled.div`
   margin: 0;
 `;
 
+function formFilled({ filled }) {
+  return filled ? '#ed8e53' : '#969696';
+}
+
 export const Btn = styled.button`
-  background: ${({ clear }) => (clear ? 'inherit' : '#969696')};
+  background: ${({ clear }) => (clear ? 'inherit' : formFilled)};
   border-radius: 8px;
   border: ${({ clear }) => (clear ? '1px solid black' : 'none')};
   font-weight: 600;
@@ -222,4 +262,9 @@ export const Btn = styled.button`
     padding: .85rem;
     margin: 0;
   }
+
+  &.filled{
+    background: ${formFilled};
+  }
+
 `;

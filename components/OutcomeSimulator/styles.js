@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  display: flex;
+  display: ${({ simulation }) => (simulation ? 'flex' : 'none')};
   flex-direction: column;
   margin: 0;
 
