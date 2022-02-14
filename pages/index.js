@@ -1,5 +1,4 @@
 // 3rd parties
-import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Head from 'next/head';
 
 // styles
@@ -15,7 +14,6 @@ export default function Home() {
       </Head>
       <h1>Simulador de Investimentos</h1>
       <Simulator />
-      <GoogleAnalytics />
     </div>
   );
 }

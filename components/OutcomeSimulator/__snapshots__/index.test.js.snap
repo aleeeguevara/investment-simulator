@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component of outcome from simulation The components snapshot should remain always the same 1`] = `
+<section
+  class="sc-bdvvtL dIUOie"
+>
+  <h2>
+    Resultado da Simulação
+  </h2>
+  <div
+    class="sc-gsDKAQ ifNXvU"
+  >
+    <div
+      class="sc-dkPtRN jZHCGp"
+    >
+      <h3>
+        Valor Final Bruto
+      </h3>
+      <p
+        class="sc-hKwDye enIhPe"
+      />
+    </div>
+    <div
+      class="sc-dkPtRN jZHCGp"
+    >
+      <h3>
+        Aliquota do IR
+      </h3>
+      <p
+        class="sc-hKwDye enIhPe"
+      />
+    </div>
+    <div
+      class="sc-dkPtRN jZHCGp"
+    >
+      <h3>
+        Valor Pago em IR
+      </h3>
+      <p
+        class="sc-hKwDye enIhPe"
+      />
+    </div>
+    <div
+      class="sc-dkPtRN jZHCGp"
+    >
+      <h3>
+        Valor Final Líquido
+      </h3>
+      <p
+        class="sc-hKwDye jqiquy"
+      />
+    </div>
+    <div
+      class="sc-dkPtRN jZHCGp"
+    >
+      <h3>
+        Valor Total Investido
+      </h3>
+      <p
+        class="sc-hKwDye enIhPe"
+      />
+    </div>
+    <div
+      class="sc-dkPtRN jZHCGp"
+    >
+      <h3>
+        Ganho Liquido
+      </h3>
+      <p
+        class="sc-hKwDye jqiquy"
+      />
+    </div>
+  </div>
+</section>
+`;

@@ -44,15 +44,28 @@ const OutcomeSimulator = function OutcomeSection({ simulationData, simulation })
     </Container>
   );
 };
+
 OutcomeSimulator.propTypes = {
   simulation: PropTypes.bool.isRequired,
   simulationData: PropTypes.shape({
-    valorFinalBruto: PropTypes.number.isRequired,
-    aliquotaIR: PropTypes.number.isRequired,
-    valorPagoIR: PropTypes.number.isRequired,
-    valorFinalLiquido: PropTypes.number.isRequired,
-    valorTotalInvestido: PropTypes.number.isRequired,
-    ganhoLiquido: PropTypes.number.isRequired,
-  }).isRequired,
+    valorFinalBruto: PropTypes.number,
+    aliquotaIR: PropTypes.number,
+    valorPagoIR: PropTypes.number,
+    valorFinalLiquido: PropTypes.number,
+    valorTotalInvestido: PropTypes.number,
+    ganhoLiquido: PropTypes.number,
+  }),
 };
+
+OutcomeSimulator.defaultProps = {
+  simulationData: [{
+    valorFinalBruto: '',
+    aliquotaIR: '',
+    valorPagoIR: '',
+    valorFinalLiquido: '',
+    valorTotalInvestido: '',
+    ganhoLiquido: '',
+  }],
+};
+
 export default OutcomeSimulator;

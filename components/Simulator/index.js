@@ -3,7 +3,8 @@ import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import OutcomeSimulator from '../OutcomeSimulator';
 // functions
-import { getIndicators, getSimulations } from './requisitions';
+import { getIndicators, getSimulations } from './requisition';
+import maskMoney from '../../utils/mask-money';
 // styles
 import {
   Container, Btn, Form, Inputform, LabelForm,
@@ -61,27 +62,20 @@ const Simulator = function Formpage() {
     },
   });
 
-  function maskMoney(moneyRaw) {
-    let maskedValue = moneyRaw;
-    maskedValue = maskedValue.replace(/\D/g, '');
-    maskedValue = `R$${(maskedValue / 100).toFixed(2)}`;
-    maskedValue = maskedValue.replace('.', ',');
-    maskedValue = maskedValue.replace(/(\d)(\d{3})(\d{3}),/g, '$1.$2.$3,');
-    maskedValue = maskedValue.replace(/(\d)(\d{3}),/g, '$1.$2,');
-
-    return maskedValue;
-  }
-
   useEffect(() => {
     (async () => {
-      const result = await getIndicators();
+      try {
+        const result = await getIndicators();
 
-      const resultParsed = {
-        ipca: result.filter((value) => value.nome === 'ipca')[0].valor,
-        cdi: result.filter((value) => value.nome === 'cdi')[0].valor,
-      };
+        const resultParsed = {
+          ipca: result.filter((value) => value.nome === 'ipca')[0].valor,
+          cdi: result.filter((value) => value.nome === 'cdi')[0].valor,
+        };
 
-      setData(resultParsed);
+        setData(resultParsed);
+      } catch (err) {
+        console.log(err);
+      }
     })();
   }, []);
 
@@ -117,6 +111,7 @@ const Simulator = function Formpage() {
                   error={formik.errors.tipoRendimento}
                   touched={formik.touched.tipoRendimento}
                   className="gross"
+                  data-testid="gross"
                 />
 
                 <BtnRight
@@ -133,6 +128,7 @@ const Simulator = function Formpage() {
                   touched={formik.touched.tipoRendimento}
                   threeOptions={false}
                   className="liquido"
+                  data-testid="liquid"
                 />
               </SelectionBtn>
             </div>
@@ -383,7 +379,8 @@ const Simulator = function Formpage() {
           </Wrap>
         </Form>
       </Container>
-      <OutcomeSimulator simulationData={simulationData} simulation={simulation} />
+
+      {simulation && <OutcomeSimulator simulationData={simulationData} />}
     </div>
   );
 };
