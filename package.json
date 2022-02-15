@@ -1,6 +1,7 @@
 {
   "name": "investment-simulator",
   "private": true,
+  "version": "1.0.0",
   "engines": {
     "npm": "please-use-yarn",
     "yarn": ">=1.22.17"
