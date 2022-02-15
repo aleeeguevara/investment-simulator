@@ -8,10 +8,10 @@ exports[`Component of outcome from simulation The components snapshot should rem
     Resultado da Simulação
   </h2>
   <div
-    class="sc-gsDKAQ ifNXvU"
+    class="sc-gsDKAQ fdQESR"
   >
     <div
-      class="sc-dkPtRN jZHCGp"
+      class="sc-dkPtRN bVjIJK"
     >
       <h3>
         Valor Final Bruto
@@ -21,7 +21,7 @@ exports[`Component of outcome from simulation The components snapshot should rem
       />
     </div>
     <div
-      class="sc-dkPtRN jZHCGp"
+      class="sc-dkPtRN bVjIJK"
     >
       <h3>
         Aliquota do IR
@@ -31,7 +31,7 @@ exports[`Component of outcome from simulation The components snapshot should rem
       />
     </div>
     <div
-      class="sc-dkPtRN jZHCGp"
+      class="sc-dkPtRN bVjIJK"
     >
       <h3>
         Valor Pago em IR
@@ -41,7 +41,7 @@ exports[`Component of outcome from simulation The components snapshot should rem
       />
     </div>
     <div
-      class="sc-dkPtRN jZHCGp"
+      class="sc-dkPtRN bVjIJK"
     >
       <h3>
         Valor Final Líquido
@@ -51,7 +51,7 @@ exports[`Component of outcome from simulation The components snapshot should rem
       />
     </div>
     <div
-      class="sc-dkPtRN jZHCGp"
+      class="sc-dkPtRN bVjIJK"
     >
       <h3>
         Valor Total Investido
@@ -61,7 +61,7 @@ exports[`Component of outcome from simulation The components snapshot should rem
       />
     </div>
     <div
-      class="sc-dkPtRN jZHCGp"
+      class="sc-dkPtRN bVjIJK"
     >
       <h3>
         Ganho Liquido
