@@ -47,7 +47,6 @@ const Simulator = function Formpage() {
       && item.tipoIndexacao === inputValues.tipoIndexacao);
 
       const [dataReturned] = result;
-
       const dataParsed = {
         valorFinalBruto: dataReturned.valorFinalBruto,
         aliquotaIR: dataReturned.aliquotaIR,
@@ -55,6 +54,8 @@ const Simulator = function Formpage() {
         valorFinalLiquido: dataReturned.valorFinalLiquido,
         valorTotalInvestido: dataReturned.valorTotalInvestido,
         ganhoLiquido: dataReturned.ganhoLiquido,
+        graficoComAporte: dataReturned.graficoValores.comAporte,
+        graficoSemAporte: dataReturned.graficoValores.semAporte,
       };
 
       setSimulationData(dataParsed);

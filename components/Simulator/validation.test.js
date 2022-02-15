@@ -1,3 +1,4 @@
+import { act } from 'react-dom/test-utils';
 import validation from './validation';
 
 describe('Validation Schema fields', () => {
@@ -10,9 +11,9 @@ describe('Validation Schema fields', () => {
       prazo: '12',
       rentabilidade: '23%',
     };
-
     const result = await validation.validate(data);
-
-    expect(result).toEqual(data);
+    act(() => {
+      expect(result).toEqual(data);
+    });
   });
 });

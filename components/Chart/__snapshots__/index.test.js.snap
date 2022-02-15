@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component of outcome from simulation The components snapshot should remain always the same 1`] = `
+<section
+  class="styles__Container-sc-7dc95r-0 fuffrO"
+>
+  <canvas
+    height="50"
+    role="img"
+    width="100"
+  />
+</section>
+`;

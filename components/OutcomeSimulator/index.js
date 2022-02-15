@@ -1,5 +1,6 @@
 // 3rd parties
 import { PropTypes } from 'prop-types';
+import ChartComponent from '../Chart';
 // styles
 import {
   Container, Cards, Card, Outcome,
@@ -41,13 +42,19 @@ const OutcomeSimulator = function OutcomeSection({ simulationData, simulation })
         </Card>
 
       </Cards>
+      <ChartComponent
+        chart1={simulationData?.graficoComAporte}
+        chart2={simulationData?.graficoSemAporte}
+      />
     </Container>
   );
 };
 
 OutcomeSimulator.propTypes = {
-  simulation: PropTypes.bool.isRequired,
+  simulation: PropTypes.bool,
   simulationData: PropTypes.shape({
+    graficoComAporte: PropTypes.number,
+    graficoSemAporte: PropTypes.number,
     valorFinalBruto: PropTypes.number,
     aliquotaIR: PropTypes.number,
     valorPagoIR: PropTypes.number,
@@ -55,9 +62,11 @@ OutcomeSimulator.propTypes = {
     valorTotalInvestido: PropTypes.number,
     ganhoLiquido: PropTypes.number,
   }),
+
 };
 
 OutcomeSimulator.defaultProps = {
+  simulation: undefined,
   simulationData: [{
     valorFinalBruto: '',
     aliquotaIR: '',
@@ -65,6 +74,8 @@ OutcomeSimulator.defaultProps = {
     valorFinalLiquido: '',
     valorTotalInvestido: '',
     ganhoLiquido: '',
+    graficoComAporte: '',
+    graficoSemAporte: '',
   }],
 };
 

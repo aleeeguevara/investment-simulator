@@ -293,10 +293,12 @@ export const Btn = styled.button`
   }
 
   &.newSimulation{
+    background: #ed8e53;
     text-transform: uppercase;
     margin: 1rem 0;
     :hover{
-      border: 1px solid black;
+      border: 1px solid #ed8e53;
+      background: #fff;
     }
   }
 `;
