@@ -15,13 +15,17 @@ const GlobalStyle = createGlobalStyle`
     min-width: 320px;
 
     .main{
-      background: #efefef;
+      background: #fff;
       margin: 1rem;
       padding: 1rem;
     }
     .flex{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
       @media (min-width: 900px){
-        display: flex;
+        align-items: center;
        }
     }
 
@@ -31,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
       text-align: center;
       margin: 0;
       padding: 1rem;
-      max-width: 1000px;
 
       @media(min-width: 900px){
         font-size: 28px;
@@ -45,7 +48,6 @@ const GlobalStyle = createGlobalStyle`
       text-align: center;
 
       @media(min-width: 900px){
-        text-align: left;
         font-size: 20px;
       }
     }

@@ -13,17 +13,24 @@ export const Container = styled.section`
 export const Cards = styled.div`
 
   @media (min-width: 900px){
+    background: #f1f1f1;
+    border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     margin-top: 1rem;
     width: 400px;
   }
-  @media (min-width: 1100px){
-    width: 600px;
+  @media (min-width: 900px){
+    width: 650px;
+    height: 220px;
+    padding-top: 1.5rem;
+    margin: 0;
   }
 `;
 export const Card = styled.div`
-  background: #f4f4f4;
+  background: #fff;
+  border-radius: 10px;
   box-shadow:  0 0 3px #626262;
   width: 150px;
   height: 50px;

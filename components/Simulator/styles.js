@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export const Container = styled.section`
   margin: 0 auto;
   width: 200px;
+  display: ${({ simulation }) => (simulation ? 'none' : 'initial')};
 
   @media(min-width: 900px){
     width: 450px;
@@ -23,9 +24,17 @@ export const Form = styled.form`
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
+  background: #f1f1f1;
+  padding: 0 0 0 1rem;
+  align-items: center;
+  border-radius: 10px;
 
   @media (min-width: 900px){
     flex-direction: row;
+    border: 1px solid #efefef;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 1rem 0;
   }
 `;
 
@@ -33,7 +42,7 @@ export const Wrap = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 1rem;
+    margin: .5rem 0%;
 
     &.btnForm{
       margin-right: 1.3rem;
@@ -41,14 +50,16 @@ export const Wrap = styled.div`
 `;
 
 function selected({ active }) {
-  return active ? 'efefef' : 'black';
+  return active ? 'fff' : 'black';
 }
 
 export const BtnLeft = styled.input`
-  background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};
-  border: 1px solid black;
+  background: ${({ active }) => (active ? '#ed8e53' : '#fff')};
+  //border: 1px solid #b1b1b1;
+  box-shadow: 0 0 3px #626262;
   border-radius: 8px 0 0 8px;
   color: ${({ active }) => (active ? 'white' : 'black')};
+  cursor: pointer;
   font-size: 12px;
   height: 40px;
   margin-bottom: 1rem;
@@ -60,7 +71,7 @@ export const BtnLeft = styled.input`
 
   :before{
     content: '✓';
-    color: #efefef;
+    color: #fff;
 
   }
   :after{
@@ -76,9 +87,11 @@ export const BtnLeft = styled.input`
 `;
 
 export const BtnCenter = styled.input`
-  background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};
-  border: 1px solid black;
+  background: ${({ active }) => (active ? '#ed8e53' : '#fff')};
+  //border: 1px solid #b1b1b1;
+  box-shadow: 0 0 3px #626262;
   color: ${({ active }) => (active ? 'white' : 'black')};
+  cursor: pointer;
   font-size: 12px;
   height: 40px;
   margin-bottom: 1rem;
@@ -90,7 +103,7 @@ export const BtnCenter = styled.input`
 
   :before{
     content: '✓';
-    color: #efefef;
+    color: #fff;
   }
 
   :after{
@@ -100,10 +113,12 @@ export const BtnCenter = styled.input`
 `;
 
 export const BtnRight = styled.input`
-  background: ${({ active }) => (active ? '#ed8e53' : '#efefef')};;
-  border: 1px solid black;
+  background: ${({ active }) => (active ? '#ed8e53' : '#fff')};;
+  //border: 1px solid #b1b1b1;
+  box-shadow: 0 0 3px #626262;
   border-radius: 0 8px 8px 0;
   color: ${({ active }) => (active ? 'white' : 'black')};
+  cursor: pointer;
   font-size: 12px;
   height: 40px;
   padding-left: 0;
@@ -114,7 +129,7 @@ export const BtnRight = styled.input`
 
   :before{
     content: '✓';
-    color: #efefef;
+    color: #fff;
   }
 
   :after{
@@ -165,6 +180,7 @@ export const Tooltip = styled.div`
   position: relative;
   margin: 0;
   padding: 0;
+  cursor: help;
 
   :hover{
     span{
@@ -208,9 +224,10 @@ function validationLabel({ touched, error }) {
 }
 
 export const Inputform = styled(InputMask)`
-  background: #efefef;
-  border: none;
+  background: #fff;
+  border: 1px solid #efefef;
   border-bottom: 2px solid ${validationInput};
+  border-radius: 6px;
   padding: .5rem;
   margin-bottom: 1rem;
 
@@ -252,12 +269,19 @@ function formFilled({ filled }) {
 export const Btn = styled.button`
   background: ${({ clear }) => (clear ? 'inherit' : formFilled)};
   border-radius: 8px;
-  border: ${({ clear }) => (clear ? '1px solid black' : 'none')};
+  border: ${({ clear }) => (clear ? '1px solid #969696' : 'none')};
   font-weight: 600;
   padding: .6rem;
   margin: .5rem 0;
   width: 180px;
   align-self: center;
+  cursor: pointer;
+
+  :hover{
+    background: ${({ clear }) => (clear ? '#ed8e53' : '#ffff')};
+    border: ${({ clear }) => (clear ? '1px solid #f1f1f1' : '1px solid #ed8e53')};
+    color: ${({ clear }) => (clear ? '#fff' : 'black')};
+  }
 
   @media (min-width: 900px){
     padding: .85rem;
@@ -268,4 +292,11 @@ export const Btn = styled.button`
     background: ${formFilled};
   }
 
+  &.newSimulation{
+    text-transform: uppercase;
+    margin: 1rem 0;
+    :hover{
+      border: 1px solid black;
+    }
+  }
 `;

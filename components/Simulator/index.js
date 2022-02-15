@@ -81,7 +81,7 @@ const Simulator = function Formpage() {
 
   return (
     <div className="flex">
-      <Container>
+      <Container simulation={simulation}>
         <h2>Simulador</h2>
         <Form onSubmit={formik.handleSubmit}>
           <Wrap>
@@ -91,7 +91,7 @@ const Simulator = function Formpage() {
                 <Tooltip>
                   🛈
                   <span>
-                    O rendimento brut é o resultado sem nenhum tipo de desconto,
+                    O rendimento bruto é o resultado sem nenhum tipo de desconto,
                     nem de taxas, nem de impostos. Já o rendimento líquido é
                     esse mesmo resultado, descontando taxas ou impostos.
                   </span>
@@ -380,7 +380,24 @@ const Simulator = function Formpage() {
         </Form>
       </Container>
 
-      {simulation && <OutcomeSimulator simulationData={simulationData} />}
+      {simulation
+      && (
+        <>
+          <OutcomeSimulator simulationData={simulationData} />
+          <Btn
+            type="button"
+            onClick={() => {
+              formik.resetForm();
+              setIncome(false);
+              setIndexingType(false);
+              setSimulation(false);
+            }}
+            className="newSimulation"
+          >
+            Nova Simulação
+          </Btn>
+        </>
+      )}
     </div>
   );
 };
