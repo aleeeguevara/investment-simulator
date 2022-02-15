@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component of outcome from simulation The components snapshot should remain always the same 1`] = `
+<section
+  class="styles__Container-sc-1er11m8-0 dEqGXC"
+>
+  <h2>
+    Resultado da Simulação
+  </h2>
+  <div
+    class="styles__Cards-sc-1er11m8-1 innhUZ"
+  >
+    <div
+      class="styles__Card-sc-1er11m8-2 ilHEoo"
+    >
+      <h3>
+        Valor Final Bruto
+      </h3>
+      <p
+        class="styles__Outcome-sc-1er11m8-3 lajaNu"
+      />
+    </div>
+    <div
+      class="styles__Card-sc-1er11m8-2 ilHEoo"
+    >
+      <h3>
+        Aliquota do IR
+      </h3>
+      <p
+        class="styles__Outcome-sc-1er11m8-3 lajaNu"
+      />
+    </div>
+    <div
+      class="styles__Card-sc-1er11m8-2 ilHEoo"
+    >
+      <h3>
+        Valor Pago em IR
+      </h3>
+      <p
+        class="styles__Outcome-sc-1er11m8-3 lajaNu"
+      />
+    </div>
+    <div
+      class="styles__Card-sc-1er11m8-2 ilHEoo"
+    >
+      <h3>
+        Valor Final Líquido
+      </h3>
+      <p
+        class="styles__Outcome-sc-1er11m8-3 kUdnvm"
+      />
+    </div>
+    <div
+      class="styles__Card-sc-1er11m8-2 ilHEoo"
+    >
+      <h3>
+        Valor Total Investido
+      </h3>
+      <p
+        class="styles__Outcome-sc-1er11m8-3 lajaNu"
+      />
+    </div>
+    <div
+      class="styles__Card-sc-1er11m8-2 ilHEoo"
+    >
+      <h3>
+        Ganho Liquido
+      </h3>
+      <p
+        class="styles__Outcome-sc-1er11m8-3 kUdnvm"
+      />
+    </div>
+  </div>
+  <section
+    class="styles__Container-sc-7dc95r-0 fuffrO"
+  >
+    <canvas
+      height="50"
+      role="img"
+      width="100"
+    />
+  </section>
+</section>
+`;
