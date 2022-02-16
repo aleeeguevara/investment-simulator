@@ -88,7 +88,6 @@ export const BtnLeft = styled.input`
 
 export const BtnCenter = styled.input`
   background: ${({ active }) => (active ? '#ed8e53' : '#fff')};
-  //border: 1px solid #b1b1b1;
   box-shadow: 0 0 3px #626262;
   color: ${({ active }) => (active ? 'white' : 'black')};
   cursor: pointer;
@@ -114,7 +113,6 @@ export const BtnCenter = styled.input`
 
 export const BtnRight = styled.input`
   background: ${({ active }) => (active ? '#ed8e53' : '#fff')};;
-  //border: 1px solid #b1b1b1;
   box-shadow: 0 0 3px #626262;
   border-radius: 0 8px 8px 0;
   color: ${({ active }) => (active ? 'white' : 'black')};
@@ -161,16 +159,20 @@ export const SelectionBtn = styled.div`
   }
 `;
 
+function validationLabel({ touched, error }) {
+  return touched && error ? '#e92929' : 'black';
+}
+
 export const LabelTooltip = styled.div`
+  color: ${validationLabel};
   display: flex;
   justify-content: space-between;
-  margin: 0;
-  width: 180px;
   margin: .5rem 0;
   padding: 0;
+  width: 180px;
 
   p{
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
     padding-top: .35rem;
   }
@@ -199,16 +201,17 @@ export const Tooltip = styled.div`
     border-radius: 6px;
     color: black;
     text-align: left;
-    font-size: 8px;
+    font-size: 11px;
     right: -45px;
     padding: 5px 10px;
     position: absolute;
     text-align: left;
     top: -60px;
     visibility: hidden;
-    width: 120px;
+    width: 200px;
 
     @media(min-width: 900px){
+      font-size: 14px;
       top: 0px;
       left: 150%;
     }
@@ -219,17 +222,14 @@ export const Tooltip = styled.div`
 function validationInput({ touched, error }) {
   return touched && error ? '#e92929' : '#b1b1b1';
 }
-function validationLabel({ touched, error }) {
-  return touched && error ? '#e92929' : 'black';
-}
 
 export const Inputform = styled(InputMask)`
   background: #fff;
-  border: 1px solid #efefef;
-  border-bottom: 2px solid ${validationInput};
+  border: 1px solid ${validationInput};
   border-radius: 6px;
   padding: .5rem;
   margin-bottom: 1rem;
+  margin-top: .5rem;
 
   &:focus{
     outline: none;
@@ -239,7 +239,7 @@ export const Inputform = styled(InputMask)`
 export const LabelForm = styled.label`
   color: ${validationLabel};
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   width: 200px;
 
@@ -255,21 +255,22 @@ export const Position = styled.div`
 
 export const Error = styled.div`
   color: #e92929;
-  font-size: 10px;
+  font-size: 11px;
   position: absolute;
-  bottom: 4px;
+  bottom: 0;
   left: -200px;
   margin: 0;
 `;
 
 function formFilled({ filled }) {
-  return filled ? '#ed8e53' : '#969696';
+  return filled ? '#ed8e53' : '#f9c09e';
 }
 
 export const Btn = styled.button`
   background: ${({ clear }) => (clear ? 'inherit' : formFilled)};
   border-radius: 8px;
   border: ${({ clear }) => (clear ? '1px solid #969696' : 'none')};
+  color: ${({ clear }) => (clear ? 'black' : 'white')};
   font-weight: 600;
   padding: .6rem;
   margin: .5rem 0;
@@ -278,9 +279,8 @@ export const Btn = styled.button`
   cursor: pointer;
 
   :hover{
-    background: ${({ clear }) => (clear ? '#ed8e53' : '#ffff')};
-    border: ${({ clear }) => (clear ? '1px solid #f1f1f1' : '1px solid #ed8e53')};
-    color: ${({ clear }) => (clear ? '#fff' : 'black')};
+    background: ${({ clear }) => (clear ? '#b2b2b2' : formFilled)};
+    border: ${({ clear }) => (clear ? '1px solid black' : 'white')};
   }
 
   @media (min-width: 900px){
@@ -296,9 +296,5 @@ export const Btn = styled.button`
     background: #ed8e53;
     text-transform: uppercase;
     margin: 1rem 0;
-    :hover{
-      border: 1px solid #ed8e53;
-      background: #fff;
-    }
   }
 `;

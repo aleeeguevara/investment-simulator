@@ -87,7 +87,10 @@ const Simulator = function Formpage() {
         <Form onSubmit={formik.handleSubmit}>
           <Wrap>
             <div className="btnWrap">
-              <LabelTooltip>
+              <LabelTooltip
+                touched={formik.touched.tipoRendimento}
+                error={formik.errors.tipoRendimento}
+              >
                 <p>Rendimento</p>
                 <Tooltip>
                   🛈
@@ -142,7 +145,10 @@ const Simulator = function Formpage() {
 
           <Wrap>
             <div className="btnWrap">
-              <LabelTooltip>
+              <LabelTooltip
+                touched={formik.touched.tipoIndexacao}
+                error={formik.errors.tipoIndexacao}
+              >
                 <p>Tipos de Indexação</p>
                 <Tooltip>
                   🛈
