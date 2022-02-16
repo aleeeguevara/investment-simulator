@@ -29,6 +29,16 @@ Esta aplicação permite ao usuário simular rendimentos com resultados variando
 
 ## Como Executar Localmente
 
+Clonar o repositório
+```
+git clone https://github.com/aleeeguevara/investment-simulator.git
+```
+
+Acessar o repositório
+```
+cd investment-simulator
+```
+
 Instalar as dependências do repositório
 
 ```
