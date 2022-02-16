@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/aleeeguevara/investment-simulator/compare/v1.0.0...v1.1.0) (2022-02-16)
+
+
+### Features
+
+* add readme to the project ([06ffcb6](https://github.com/aleeeguevara/investment-simulator/commit/06ffcb675110650a09d4e67a0d5a6b50065396e5))
+* add UI improvements to layout and buttons ([233a9ac](https://github.com/aleeeguevara/investment-simulator/commit/233a9ac0495ee181d43cba7d15612c47e1de2b9c))
+
 ## 1.0.0 (2022-02-15)
 
 
